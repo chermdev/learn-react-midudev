@@ -5,17 +5,31 @@ import './index.css'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-
+const users = [
+  {
+    userName: 'chermdev',
+    name: 'Carlos Hernandez',
+    isFollowing: true
+  },
+  {
+    userName: 'midudev',
+    name: 'Miguel Ángel Durán',
+    isFollowing: false
+  }
+]
 
 root.render(
   <section className='App'>
-    <TwitterFollowCard userName="chermdev">
-      Carlos Hernandez
-    </TwitterFollowCard>
-
-    <TwitterFollowCard userName="midudev">
-      Miguel Ángel Durán
-    </TwitterFollowCard>
+    {users.map(user => {
+      const { userName, name, isFollowing } = user
+      return (
+        <TwitterFollowCard
+          userName={userName}
+          initialIsFollowing={isFollowing}>
+          {name}
+        </TwitterFollowCard>
+      )
+    })}
 
   </section>
 )
